@@ -1,57 +1,33 @@
-#include <bits/stdc++.h>
-
-#define pi (3.141592653589)
-#define ll long long int
-#define rrep(i, n) for(int i=n-1;i>=0;i--)
-#define rep(i,n) for(int i=0;i<n;i++)
-#define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
-#define ps(x,y) fixed<<setprecision(y)<<x
-
+#include <iostream>
 using namespace std;
-
-void solution()
+int main()
 {
-    int n;
-    cin>>n;
-    int a[n];
-    rep(i,n)
-    cin>>a[i];
-
-    map<int,int> mp;
-    rep(i,n)
+    int t; 
+    cin >> t;
+    while (t--)
     {
-        mp[a[i]]++;
-    }
-    int ans=-1;int ansf=-1;
-    for(auto it:mp)
-    {
-        if(it.second>ansf)
+        int n;int c=0,d=0,e=0;
+        cin>> n;
+        int a[n];
+        for (int i=0; i<=n-1; i++)
         {
-            ansf=it.second;
-            ans=it.first;
+            cin >> a[i];
         }
-    }
-    int count=0;
-    for(auto it:mp)
-    {
-        if(it.second==ansf)
-        count++;
-    }
-    if(count>1)
-    cout<<"CONFUSED"<<endl;
-    else
-    cout<<ans<<endl;
-}
-
-
-int32_t main()
-{
-    fast
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        solution();
+        for (int j=1; j<=10; j++)
+        {
+            for (int i=0; i<=n-1; i++)
+            {
+                if( a[i]==j) c++;
+            }
+                if(d<c) d=c; 
+                else if(d==c && e<d)
+                {
+                    e=d;
+                }
+        }
+        if(e!=0) cout << "confused"<< endl;
+        else cout << d<< endl;
     }
     return 0;
 }
+                

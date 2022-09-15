@@ -1,33 +1,33 @@
-#include <bits/stdc++.h>
-
-#define pi (3.141592653589)
-#define ll long long int
-#define rrep(i, n) for(int i=n-1;i>=0;i--)
-#define rep(i,n) for(int i=0;i<n;i++)
-#define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
-#define ps(x,y) fixed<<setprecision(y)<<x
-
+#include <iostream>
 using namespace std;
 
-void solution()
-{
-}
-
-
-int32_t main()
-{
-	fast
+int main() {
+	// your code goes here
 	int t;
 	cin>>t;
-	while(t--)
-	{
-		int n,m,k;
-		int A[m], B[k];
-		cin >> n>>m>> k;
-		for (int i=0; i<=m-1; i++) cin>> A[i];
-		for (int i=0; i<=k-1; i++) cin>> B[i];
-
-		solution();
+	while(t--){
+	    int n,m,k,a[100],b[100],c[100]={},ans1=0,ans2=0;
+	    cin>>n>>m>>k;
+	    for(int i=0;i<m;i++){
+	        cin>>a[i];
+	    }
+	    for(int i=0;i<k;i++){
+	        cin>>b[i];
+	    }
+	    for(int i=1,j=0,x=0;i<=n;i++){
+	        if(j<m && a[j] == i){c[i-1]++;j++;}
+	        else{c[i-1]+=5;}
+	        if(x<k && b[x] == i){c[i-1]++;x++;}
+	        else {c[i-1]+=5;}
+	        
+	    }
+	    
+	    for(int i=0;i<n;i++){
+	        if(c[i]==2){ans1++;}
+	        if(c[i]==10){ans2++;}
+	    }
+	    
+	    cout<<ans1<<" "<<ans2<<endl;
 	}
 	return 0;
 }

@@ -11,43 +11,21 @@
 #define it(i,f) for(auto i=f.begin(); i!=f.end(); i++)
 #define pii pair<int,int>
 #define vi vector<int>
-#define arr(n); ll ar[n]; for(int i=0;i<n;i++) cin>>ar[i];
-
 using namespace std;
 
 void solution()
 {
-    ll n,ans=0,ip=1;
-    ll m=1000000007;
-    cin>>n;
-    map<ll,ll> mp;
-    ll a[n];
-    rep(i,n) 
-    {
-        cin>>a[i];
-        mp[a[i]]++;
-    }
-    ll s=mp.size();
-    ll xx=pow(2,s-1) -1;
-    ans+=n;
-    ll x=pow(2,s)-1-s;
-    for(auto it:mp)
-    {
-        if(it.second>1) 
-        {
-            ip*=it.second;
-        }
-        else continue;
-    }
-    ans+=ip*x;
-    cout<<(ans)%m<<endl;
+    int x;
+    cin>>x;
+    if(x<=50) cout<<"LEFT"<<endl;
+    if(x>50) cout<<"RIGHT"<<endl;
 }
 
 
 int32_t main()
 {
     fast
-    ll t;
+    int t;
     cin>>t;
     while(t--)
     {

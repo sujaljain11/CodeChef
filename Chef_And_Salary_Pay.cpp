@@ -1,42 +1,33 @@
 #include <bits/stdc++.h>
-
-#define pi (3.141592653589)
-#define ll long long int
-#define rrep(i, n) for(int i=n-1;i>=0;i--)
-#define rep(i,n) for(int i=0;i<n;i++)
-#define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
-#define ps(x,y) fixed<<setprecision(y)<<x
-
 using namespace std;
-
-void solution()
+int main()
 {
-    int x,y;int a=0,b=0,c=0;
-    cin>> x>> y;
-    string day;
-    cin>> day;
-    for(int i=0; i<30; i++) 
-    {
-        if(day[i]=='1')
-        {
-            a+=1;
-            b+=1;
-        }
-        else b=0;
-        if(c<=b) c=b;
-    }     
-    cout<< ((a*x) + (c*y))<< endl;
-}
-
-
-int32_t main()
-{
-    fast
     int t;
-    cin>>t;
-    while(t--)
+    cin >> t;
+    while (t--)
     {
-        solution();
+        int a=0,b=0,c=0;
+        int x,y;
+        cin >>x>>y;
+        char ch[30];
+       for (int i=0; i<=29; i++)
+       {
+           cin >> ch[i];
+           if (ch[i]=='1')
+           {
+               a++;
+               b++;
+               if(c<b) c=b; 
+           } 
+           else 
+           {
+               b=0;
+           }
+       }
+       int salary=a*x + c*y;
+       cout << a*x + c*y<< endl;
     }
     return 0;
 }
+
+               
