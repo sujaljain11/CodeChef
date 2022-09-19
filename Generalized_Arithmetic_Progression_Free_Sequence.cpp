@@ -27,20 +27,30 @@ typedef tuple<long long int,long long int,long long int> State;
 
 void solution()
 {
-    ll n,ans=1;
-    cin>>n;
-    ll a[n];
-    mpii mp;
+    ll a,b,n;
+    cin>>a>>b>>n;
+    vi mark(1e6,1),ans;
+    for(ll i=1;i<1e6;i++)
+    {
+        if(mark[i]==1) 
+        {
+            ans.pb(i);
+            for(ll j=1;j<=i;j++)
+            {
+                if(mark[j]==1) 
+                {
+                    ll ind1=a*i-b*j;
+                    ll ind2=a*j-b*i;
+                    if(ind1>i) mark[ind1]=0;
+                    if(ind2>i) mark[ind2]=0;
+                }
+            }
+        }
+        if(ans.size()==n) break;
+    }
     rep(i,n)
-    {
-        cin>>a[i];
-        mp[a[i]]++;
-    }
-    for(auto it:mp)
-    {
-        ans=(ans%1000000007)*(it.second+1)%1000000007;
-    }
-    cout<<(ans-1)%1000000007<<endl;
+    cout<<ans[i]<<" ";
+    cout<<endl;
 }
 
 int32_t main()
