@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 #define pi (3.141592653589)
+#define pb push_back
 #define ll long long int
 #define rrep(i, n) for(ll i=n-1;i>=0;i--)
 #define lp(i,a,b) for(ll i=a;i<b;i++)
@@ -17,40 +18,36 @@ typedef vector<long long int> vi;
 typedef vector<string> vs;
 typedef vector<pii> vii;
 typedef vector<vi> vvi;
-typedef map<long long int,long long int> mpii;
+typedef map<long long int,long long int> mp;
+typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
-typedef multiset<long long int> mseti;
+typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll n,m=INT_MIN,mm=INT_MAX;
-    map<ll,ll> mp;
+    ll n;
     cin>>n;
-    ll a[n];
+    vi v(n);
+    ump m;
     rep(i,n) 
     {
-        cin>>a[i];
-        mp[a[i]]++;
+        cin>>v[i];
+        m[v[i]]++;
     }
-    it(i,mp) 
+    ll ans=0,max=0;
+    for(auto it:m)
     {
-        m=max(m,i->second);
-        mm=min(mm,i->second);
+        if(it.second>max) max=it.second;
     }
-    if(m==1)
+    while(max>1)
     {
-        cout<<0<<endl;
-        return;
+        if(max%2==1) 
+        max=(max+1)/2;
+        else max=max/2;
+        ans++;
     }
-    if(m==mm) 
-    {
-        cout<<m-1<<endl;
-        return;
-    }
-
-    cout<<m-mm<<endl;
+    cout<<ans<<endl;
 }
-
 
 
 int32_t main()

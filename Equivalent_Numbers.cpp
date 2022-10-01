@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 #define pi (3.141592653589)
+#define pb push_back
 #define ll long long int
 #define rrep(i, n) for(ll i=n-1;i>=0;i--)
 #define lp(i,a,b) for(ll i=a;i<b;i++)
@@ -21,33 +22,22 @@ typedef map<long long int,long long int> mpii;
 typedef set<long long int> seti;
 typedef multiset<long long int> mseti;
 
-
-int hello(ll aa, ll bb)
-{
-    if(floor(log2(aa) / log2(bb))!=ceil((log2(aa) / log2(bb)))) return -1;
-    else return 1;
-}
-
-
 void solution()
 {
     ll a,b;
     cin>>a>>b;
-    
-    ll y=min(a,b);
-    ll x=max(a,b);
-    if((floor(a/b))!=(ceil(a/b))) 
+    ll t=36,c=1,d=1;
+    while(t--)
     {
-        cout<<"NO"<<endl;
-        return;
+        if(pow(a,c)>pow(b,d)) d++;
+        else if(pow(a,c)<pow(b,d)) c++;
+        else
+        {
+            cout<<"YES"<<endl;
+            return;
+        }
     }
-    ll ans=x/y;
-    if(hello(x,ans)!=-1 && hello(y,ans)!=-1)
-    {
-        cout<<"YES"<<endl;
-        return;
-    }
-    else cout<<"NO"<<endl;
+    cout<<"NO"<<endl;
 }
 
 
