@@ -17,35 +17,25 @@ using namespace std;
 
 void solution()
 {
-    int n,ans=0;
+    ll n,ans=1;
     cin>>n;
-    vector<int> a(n);
-    rep(i,n)
-    cin>>a[i];
-    rep(i,n)
+    ll a[n];
+    cin>>a[0];
+    for(ll i=1;i<n;i++)
     {
-        int k=a[i];int c=0;
-        for(int j=0;j<5;j++)
+        cin>>a[i];
+        ll cnt=0;
+        for(ll j=i-1;j>=0;j--)
         {
-            if((i-j)>0) 
+            if(a[i]>=a[j]) break;
+            ++cnt;
+            if(cnt==5) 
             {
-                if(k<a[j])
-                {
-                    c++;
-                    continue;
-                }
+                ans++;
                 break;
             }
-            else
-            if(i<=5) 
-            {
-                if(c==i) ans++;
-            }
-            else 
-            {
-                if(c==5) ans++;
-            }
         }
+        if(i<5 && cnt==i) ans++;
     }
     cout<<ans<<endl;
 }
