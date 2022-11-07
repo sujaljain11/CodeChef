@@ -26,39 +26,29 @@ typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
 typedef multiset<long long int> mset;
 
+
+
 void solution()
 {
-    ll n,k,mx=-1,ans=0;
-    cin>>n>>k;
-    bool b[(2*n)+1];
-    ll a[n];
-    rep(i,n) 
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    while(n>0) 
     {
-        cin>>a[i];
-        mx=max(a[i],mx);
-        b[a[i]]=true;
-    }
-    vi v;
-    rep1(i,(2*n)+1) 
-    {
-        if(b[i]==false) v.pb(i);
-    }
-    rep(i,k) 
-    {
-        if(mx>v.front())
-        {
-            ans+=mx-v.front();
-            v.erase(v.begin());
-        }
+        if(n&1) n--;
         else
         {
-            mx=v.back();
-            auto it=v.end();
-            it--;
-            v.erase(it);
+            if(s.substr(0,n/2)==s.substr(n/2,n/2)) 
+            n/=2;
+            else 
+            {
+                pn;
+                return;
+            }
         }
     }
-    cout<<ans<<endl;
+    py;
 }
 
 

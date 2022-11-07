@@ -28,37 +28,17 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll n,k,mx=-1,ans=0;
-    cin>>n>>k;
-    bool b[(2*n)+1];
-    ll a[n];
-    rep(i,n) 
+    ll n,cnt=0;
+    cin>>n;
+    string s;
+    cin>>s;
+    rep(i,s.length()/2)
     {
-        cin>>a[i];
-        mx=max(a[i],mx);
-        b[a[i]]=true;
+        if(s[i]!=s[s.length()-i-1]) cnt++;
     }
-    vi v;
-    rep1(i,(2*n)+1) 
-    {
-        if(b[i]==false) v.pb(i);
-    }
-    rep(i,k) 
-    {
-        if(mx>v.front())
-        {
-            ans+=mx-v.front();
-            v.erase(v.begin());
-        }
-        else
-        {
-            mx=v.back();
-            auto it=v.end();
-            it--;
-            v.erase(it);
-        }
-    }
-    cout<<ans<<endl;
+    if(cnt%2==0) cout<<"YES"<<endl;
+    else if(n%2!=0 && cnt%2!=0) cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
 }
 
 
