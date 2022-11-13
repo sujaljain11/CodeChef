@@ -21,7 +21,7 @@ typedef vector<long long int> vi;
 typedef vector<string> vs;
 typedef vector<pii> vii;
 typedef vector<vi> vvi;
-typedef map<long long int,long long int> mp;
+typedef map<long long int,long long int> mp; 
 typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
 typedef multiset<long long int> mset;
