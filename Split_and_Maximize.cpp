@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
- 
+
 #define pi (3.141592653589)
 #define pb push_back
 #define pp pop_back
@@ -13,9 +13,12 @@
 #define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
 #define ps(x,y) fixed<<setprecision(y)<<x
 #define it(i,f) for(auto i:f)
- 
+
+const ll sz=1e6+1;
+const ll mod=998244353;
+
 using namespace std;
- 
+
 typedef pair<long long int, long long int> pii;
 typedef vector<long long int> vi;
 typedef vector<string> vs;
@@ -25,35 +28,30 @@ typedef map<long long int,long long int> mp;
 typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
 typedef multiset<long long int> mset;
- 
+
 void solution()
 {
-    
-}
- 
- 
-int32_t main()
-{
-    fast
-    ll n,k,ans=0,cn=0,o=0;
-    cin>>n>>k;
-    mp m;
+    ll n,sum=0;
+    cin>>n;
     rep(i,n)
     {
         ll x;
         cin>>x;
-        m[x]++;
+        sum+=x;
+        sum%=mod;
     }
-    it(i,m)
+    cout<<sum*(sum-1)%mod<<endl;
+}
+
+
+int32_t main()
+{
+    fast
+    int t;
+    cin>>t;
+    while(t--)
     {
-        if(i.second%2==0) ans+=i.second;
-        else 
-        {
-            cn++;
-            o+=i.second;
-        }
+        solution();
     }
-    ans+=o-cn/2;
-    cout<<ans<<endl;
     return 0;
 }
