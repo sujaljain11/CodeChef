@@ -20,7 +20,7 @@ const ll mod=1e9+7;
 using namespace std;
 
 typedef pair<long long int, long long int> pii;
-typedef vector<long long int> vi;
+typedef vector<long long int> vi; 
 typedef vector<string> vs;
 typedef vector<pii> vii;
 typedef vector<vi> vvi;
