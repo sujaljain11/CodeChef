@@ -52,13 +52,8 @@ void solution()
     }
     if(n>k)
     {
-        ll i=1;
-        ll r=k;
-        while(k<n)
-        {
-            k=r*i;
-            i++;
-        }
+        ll f=ceil(1.0*n/k);
+        k=k*f;
         ll a=k/n,b=k%n;
         if(b!=0) a++;
         cout<<a<<endl;
