@@ -12,7 +12,7 @@
 #define rep1(i,n) for(ll i=1;i<n;i++)
 #define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
 #define ps(x,y) fixed<<setprecision(y)<<x
-#define it(i,f) for(auto i:f)
+#define it(k,f) for(auto k:f)
 
 const ll sz=1e6+1;
 const ll mod=1e9+7;
@@ -31,26 +31,21 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll x,y;
-    cin>>x>>y;
-    if(x==1 && y!=1) 
+    ll n,ans=0;
+    cin>>n;
+    vi a(n),d(n);
+    rep(i,n) 
     {
-        pn;
-        return;
+        cin>>a[i];
+        d[i]=0;
     }
-    if(x==2)
+    rep(i,n) if(a[i]-a[n-i-1]<0) d[i]=a[n-i-1]-a[i];
+    ans=d[0];
+    rep1(i,n)
     {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
+        ans+=max((ll)0,d[i]-d[i-1]);
     }
-    if(x==3) 
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    py;
+    cout<<ans<<endl;
 }
 
 

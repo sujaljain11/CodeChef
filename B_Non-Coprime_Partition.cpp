@@ -3,8 +3,8 @@
 #define pi (3.141592653589)
 #define pb push_back
 #define pp pop_back
-#define py cout<<"YES"<<endl
-#define pn cout<<"NO"<<endl
+#define py cout<<"Yes"<<endl
+#define pn cout<<"No"<<endl
 #define ll long long int
 #define rrep(i, n) for(ll i=n-1;i>=0;i--)
 #define lp(i,a,b) for(ll i=a;i<b;i++)
@@ -31,37 +31,43 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll x,y;
-    cin>>x>>y;
-    if(x==1 && y!=1) 
-    {
-        pn;
-        return;
-    }
-    if(x==2)
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    if(x==3) 
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    py;
+    
 }
 
 
 int32_t main()
 {
     fast
-    int t;
-    cin>>t;
-    while(t--)
+    ll n;
+    cin>>n;
+    if(n==1) pn;
+    else if(n==2) pn;
+    else if(n==4) 
     {
-        solution();
+        py;
+        cout<<1<<" "<<2<<endl;
+        cout<<3<<" "<<1<<" "<<3<<" "<<4<<endl;
+    }
+    else 
+    {
+        if(n%2==0) 
+        {
+            py;
+            cout<<n/2<<" ";
+            rep1(i,(n/2)+1) cout<<i<<" ";
+            cout<<endl<<n/2<<" ";
+            for(int j=n/2+1;j<=n;j++) cout<<j<<" ";
+            cout<<endl;
+        }
+        else 
+        {
+            py;
+            cout<<(n+1)/2<<" ";
+            rep1(i,(n+1)/2+1) cout<<i<<" ";
+            cout<<endl<<n-(n+1)/2<<" ";
+            for(int j=(n+1)/2+1;j<=n;j++) cout<<j<<endl;
+            cout<<endl;
+        }
     }
     return 0;
 }

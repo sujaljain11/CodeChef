@@ -31,23 +31,12 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll x,y;
-    cin>>x>>y;
-    if(x==1 && y!=1) 
+    double a,b,c;
+    cin>>a>>b>>c;
+    double k=(a+b+c)/9.0;
+    if(a<k || b<k || c<k || floor(k)!=ceil(k)) 
     {
         pn;
-        return;
-    }
-    if(x==2)
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    if(x==3) 
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
         return;
     }
     py;

@@ -31,26 +31,15 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll x,y;
+    ll x,y,a,b;
     cin>>x>>y;
-    if(x==1 && y!=1) 
-    {
-        pn;
-        return;
-    }
-    if(x==2)
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    if(x==3) 
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    py;
+    cin>>a>>b;
+    ll r=min(x,y),w=max(x,y);
+    x=r;
+    y=w;
+    ll p=y-x,q=x;
+    cout<<min(a*p+b*q,a*p+2*x*a)<<endl;
+    return;
 }
 
 

@@ -31,26 +31,20 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll x,y;
-    cin>>x>>y;
-    if(x==1 && y!=1) 
+    ll n,m,k;
+    cin>>n>>m>>k;
+    if(m==0) 
     {
-        pn;
+        cout<<0<<endl;
         return;
     }
-    if(x==2)
+    if(n/k>=m) 
     {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
+        cout<<m<<endl;
         return;
     }
-    if(x==3) 
-    {
-        if(y==1 || y==2 || y==3) py;
-        else pn;
-        return;
-    }
-    py;
+    cout<<n/k-ceil(1.0*(m-n/k)/(k-1))<<endl;
+    return;
 }
 
 
