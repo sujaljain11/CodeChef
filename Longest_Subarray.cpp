@@ -1,3 +1,6 @@
+// TO BE SOLVED
+//  BINARY SEARCH 
+//  PREFIX SUMS
 #include <bits/stdc++.h>
 
 #define pi (3.141592653589)
@@ -14,6 +17,8 @@
 #define ps(x,y) fixed<<setprecision(y)<<x
 #define it(i,f) for(auto i:f)
 
+#define vlli(v,n) vector<ll> v(n); rep(i,n) cin>>v[i];
+
 const ll sz=1e6+1;
 const ll mod=1e9+7;
 
@@ -29,34 +34,58 @@ typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
 typedef multiset<long long int> mset;
 
+bool arrsame(vi a,vi b) 
+{
+    for(int i=0;i<a.size();i++)
+    {
+        if(a[i]!=0 && b[i]==0 || a[i]==0 b[i]!=0 ) return 0;
+    }
+    return 1;
+}
+
+bool check(vi arr,vi ors,ll k)
+{
+    vi bits(32,0);
+    rep(i,k)
+    rrep(j,32)
+    if(arr[i]&(1LL<<j)) 
+    {
+        bits[j]++;
+        ors[j]--;
+    }
+    if(arrsame(bits,ors)) return 1;
+    
+}
 void solution()
 {
-    ll n,a=0,b=0,c=0;
+    ll n;
     cin>>n;
-    rep(i,n) 
+    vlli(v,n);
+    vi x(32,0);
+    rep(i,n) for(ll j=31;j>=0;j--) if(i&(1LL<<j)) x[j]++;
+    ll l=1,r=n,ans=-1;
+    while(l<=r) 
     {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        ll m=(l+r)/2;
+        if(check(v,x,m)) 
+        {
+            ans=max(ans,m);
+            l=m+1;
+        }
+        else r=m-1;
     }
-    if(a==0 && b==0 && c==0) py;
-    else pn;
+    cout<<ans<<endl;
 }
 
 
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }

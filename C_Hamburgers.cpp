@@ -29,34 +29,62 @@ typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
 typedef multiset<long long int> mset;
 
+ll nb,nc,ns,p,pc,ps,fb,fc,fs;
+ll cb=0,cc=0,cs=0;
+
+ll price(ll x)
+{
+    fb=max((ll)0,cb*x-nb);
+    fc=max((ll)0,cc*x-nc);
+    fs=max((ll)0,cs*x-ns);
+    ll q=fb*p+fc*pc+fs*ps;
+    return(q);
+}
+
 void solution()
 {
-    ll n,a=0,b=0,c=0;
-    cin>>n;
-    rep(i,n) 
+    string s;
+    ll r;
+    cin>>s;
+    cin>>nb>>ns>>nc;
+    cin>>p>>ps>>pc;
+    cin>>r;
+    rep(i,s.length())
     {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        if(s[i]=='B') cb++;
+        if(s[i]=='C') cc++;
+        if(s[i]=='S') cs++; 
     }
-    if(a==0 && b==0 && c==0) py;
-    else pn;
+    ll low=0,high=1e14,mid=0,ans=0;
+    while(low<=high)
+    {
+        mid=low+(high-low)/2;
+        ll y=price(mid);
+        if(y==r)
+        {
+            cout<<mid<<endl;
+            return;
+        }
+        if(y>r) high=mid-1;
+        else 
+        {
+            low=mid+1;
+            ans=mid;
+        }
+    }
+    cout<<ans<<endl;
+    return;
 }
 
 
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    t=1;
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }

@@ -9,10 +9,12 @@
 #define rrep(i, n) for(ll i=n-1;i>=0;i--)
 #define lp(i,a,b) for(ll i=a;i<b;i++)
 #define rep(i,n) for(ll i=0;i<n;i++)
-#define rep1(i,n) for(ll i=1;i<n;i++)
+#define rep1(i,n) for(ll i=2;i<n;i++)
 #define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
 #define ps(x,y) fixed<<setprecision(y)<<x
 #define it(i,f) for(auto i:f)
+
+#define vlli(v,n) vector<ll> v(n); rep(i,n) cin>>v[i];
 
 const ll sz=1e6+1;
 const ll mod=1e9+7;
@@ -29,19 +31,45 @@ typedef unordered_map<long long int,long long int> ump;
 typedef set<long long int> seti;
 typedef multiset<long long int> mset;
 
+vi v(100);
+void prime()
+{
+    ll k=1,i=2;
+    v[0]=1;
+    while(k<=99)
+    {
+        ll cn=0;
+        ll x=i;
+        i++;
+        lp(j,2,x+1) 
+        {
+            if(x%j==0) cn++;
+        }
+        if(cn==1) 
+        {
+            v[k]=x;
+            k++;
+        }
+    }
+}
 void solution()
 {
-    ll n,a=0,b=0,c=0;
-    cin>>n;
-    rep(i,n) 
-    {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
-    }
-    if(a==0 && b==0 && c==0) py;
+    // vi v;
+    // v.pb(1);
+    // rep1(i,100) 
+    // {
+    //     ll cn=0;
+    //     ll x=i;
+    //     lp(j,2,x+1) 
+    //     {
+    //         if(x%j==0) cn++;
+    //     }
+    //     if(cn==1) v.pb(i);
+    // }
+    ll n,m;
+    cin>>n>>m;
+    auto a=find(v.begin(),v.end(),n);
+    if(m==v[a-v.begin()+1]) py;
     else pn;
 }
 
@@ -49,14 +77,13 @@ void solution()
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    vi v;
+    t=1;
+    prime();
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }

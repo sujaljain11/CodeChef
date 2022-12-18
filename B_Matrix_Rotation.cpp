@@ -14,6 +14,8 @@
 #define ps(x,y) fixed<<setprecision(y)<<x
 #define it(i,f) for(auto i:f)
 
+#define vlli(v,n) vector<ll> v(n); rep(i,n) cin>>v[i];
+
 const ll sz=1e6+1;
 const ll mod=1e9+7;
 
@@ -31,32 +33,46 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll n,a=0,b=0,c=0;
-    cin>>n;
-    rep(i,n) 
+    ll a,b,c,d;
+    cin>>a>>b;
+    cin>>c>>d;
+    vi x(4),y(4),z(4),v(4);
+    x[0]=a;x[1]=b;x[2]=c;x[3]=d;
+    y[0]=b;y[1]=a;y[2]=d;y[3]=c;
+    z[0]=c;z[1]=d;z[2]=a;z[3]=b;
+    v[0]=d;v[1]=c;v[2]=b;v[3]=a;
+    if(x[0]<x[1] && x[0]<x[2] && x[0]<x[3] && x[3]>x[2] && x[3]>x[1])
     {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        cout<<"YES"<<endl;
+        return;
     }
-    if(a==0 && b==0 && c==0) py;
-    else pn;
+    if(y[0]<y[1] && y[0]<y[2] && y[0]<y[3] && y[3]>y[2] && y[3]>y[1])
+    {
+        cout<<"YES"<<endl;
+        return;
+    }
+    if(z[0]<z[1] && z[0]<z[2] && z[0]<z[3] && z[3]>z[2] && z[3]>z[1])
+    {
+        cout<<"YES"<<endl;
+        return;
+    }
+    if(v[0]<v[1] && v[0]<v[2] && v[0]<v[3] && v[3]>v[2] && v[3]>v[1])
+    {
+        cout<<"YES"<<endl;
+        return;
+    }
+    cout<<"NO"<<endl;
 }
 
 
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }

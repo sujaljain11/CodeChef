@@ -7,7 +7,7 @@
 #define pn cout<<"NO"<<endl
 #define ll long long int
 #define rrep(i, n) for(ll i=n-1;i>=0;i--)
-#define lp(i,a,b) for(ll i=a;i<b;i++)
+#define lp(i,a,b) for(ll i=a;i<=b;i++)
 #define rep(i,n) for(ll i=0;i<n;i++)
 #define rep1(i,n) for(ll i=1;i<n;i++)
 #define fast ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
@@ -31,32 +31,32 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll n,a=0,b=0,c=0;
+    ll n,ans=0;
     cin>>n;
-    rep(i,n) 
+    vi v(n);
+    rep(i,n) cin>>v[i];
+    sort(v.begin(),v.end(),greater<int>());
+    for(ll i=n;i>=1;i--)
     {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        if(i-v[n-i]<0) 
+        {
+            cout<<-1<<endl;
+            return;
+        }
+        ans+=i-v[n-i];
     }
-    if(a==0 && b==0 && c==0) py;
-    else pn;
+    cout<<ans<<endl;
 }
 
 
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }

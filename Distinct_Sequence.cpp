@@ -31,32 +31,53 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll n,a=0,b=0,c=0;
+    ll n,a=0,b=0,k=0;
     cin>>n;
-    rep(i,n) 
+    string s;
+    cin>>s;
+    vvi v(2,vi());
+    rep(i,s.length()) 
     {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        if(s[i]=='1') 
+        {
+            a++;
+            v[0].pb(i+1);
+        }
+        else 
+        {
+            b++;
+            v[1].pb(i+1);
+        }
     }
-    if(a==0 && b==0 && c==0) py;
-    else pn;
+    if(a==0 || b==0 ) 
+    {
+        cout<<-1<<endl;
+        return;
+    }
+    it(i,v[0]) 
+    {
+        if(k==n) break;
+        cout<<i<<" ";
+        k++;
+    }
+    it(i,v[1]) 
+    {
+        if(k==n) break;
+        cout<<i<<" ";
+        k++;
+    }
+    cout<<endl;
 }
 
 
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }

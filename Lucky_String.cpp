@@ -14,6 +14,8 @@
 #define ps(x,y) fixed<<setprecision(y)<<x
 #define it(i,f) for(auto i:f)
 
+#define vlli(v,n) vector<ll> v(n); rep(i,n) cin>>v[i];
+
 const ll sz=1e6+1;
 const ll mod=1e9+7;
 
@@ -31,32 +33,45 @@ typedef multiset<long long int> mset;
 
 void solution()
 {
-    ll n,a=0,b=0,c=0;
-    cin>>n;
-    rep(i,n) 
+    string a,b;
+    cin>>a>>b;
+    mp m1,m2;
+    rep(i,26)
     {
-        ll x,y,z;
-        cin>>x>>y>>z;
-        a+=x;
-        b+=y;
-        c+=z;
+        m1[i]=0;
+        m2[i]=0;
     }
-    if(a==0 && b==0 && c==0) py;
-    else pn;
+    ll ans=0;
+    rep(i,b.length())
+    {
+        m1[b[i]-'a']++;
+    }
+    rep(i,a.length())
+    {
+        if(i<b.length()) 
+        {
+            m2[a[i]-'a']++;
+        }
+        else 
+        {
+            if(m1==m2) ans++;
+            m2[a[i-b.length()]-'a']--;
+            m2[a[i]-'a']++;
+        }
+    }
+    if(m1==m2) ans++;
+    cout<<ans<<endl;
 }
 
 
 int32_t main()
 {
     fast
-    ll n,sum1=0,sum2=0,sum3=0;
-    cin>>n;
-    vi a(n),b(n),c(n);
-    rep(i,n) cin>>a[i]>>b[i]>>c[i];
-    it(i,a) sum1+=i;
-    it(i,b) sum2+=i;
-    it(i,c) sum3+=i;
-    if(sum1==0 && sum2==0 && sum3==0) py;
-    else pn;
+    int t;
+    t=1;
+    while(t--)
+    {
+        solution();
+    }
     return 0;
 }
