@@ -42,16 +42,8 @@ void solution()
         s+=x;
     }
     ll p=s%(n+1),cn=0;
-    rep(i,5)
-    {
-        p++;
-        if(p>n+1) 
-        {
-            p=1;
-        }
-        else cn++;
-    }
-    cout<<cn<<endl;
+    if((n+1)-p==1) cout<<2<<endl;
+    else cout<<1<<endl;
 }
 
 
